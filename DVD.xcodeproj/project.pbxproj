@@ -7,21 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B00D1B1323D329D000246C70 /* preview.mov in Resources */ = {isa = PBXBuildFile; fileRef = B00D1B1223D329D000246C70 /* preview.mov */; };
-		B09C71D623D13C89002DC238 /* DVDView.h in Headers */ = {isa = PBXBuildFile; fileRef = B09C71D423D13C88002DC238 /* DVDView.h */; };
-		B09C71D723D13C89002DC238 /* DVDView.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C71D523D13C89002DC238 /* DVDView.m */; };
-		B09C71DB23D13F0A002DC238 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B09C71DA23D13F09002DC238 /* Info.plist */; };
+		B09C71D623D13C89002DC238 /* view.h in Headers */ = {isa = PBXBuildFile; fileRef = B09C71D423D13C88002DC238 /* view.h */; };
+		B09C71D723D13C89002DC238 /* view.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C71D523D13C89002DC238 /* view.m */; };
 		B09C71E123D14C7D002DC238 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C71E023D14C7D002DC238 /* thumbnail.png */; };
 		B09C71E323D14C92002DC238 /* thumbnail2.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C71E223D14C92002DC238 /* thumbnail2.png */; };
 		B0BE233023D3E18400672C2F /* dvdlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B0BE232F23D3E18300672C2F /* dvdlogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B00D1B1223D329D000246C70 /* preview.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = preview.mov; sourceTree = "<group>"; };
 		B09C71C523D1354C002DC238 /* DVD.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVD.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		B09C71D423D13C88002DC238 /* DVDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDView.h; sourceTree = "<group>"; };
-		B09C71D523D13C89002DC238 /* DVDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVDView.m; sourceTree = "<group>"; };
-		B09C71DA23D13F09002DC238 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DVD/Info.plist; sourceTree = "<group>"; };
+		B09C71D423D13C88002DC238 /* view.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = view.h; sourceTree = "<group>"; };
+		B09C71D523D13C89002DC238 /* view.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = view.m; sourceTree = "<group>"; };
 		B09C71E023D14C7D002DC238 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
 		B09C71E223D14C92002DC238 /* thumbnail2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail2.png; sourceTree = "<group>"; };
 		B0BE232F23D3E18300672C2F /* dvdlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dvdlogo.png; sourceTree = "<group>"; };
@@ -43,10 +39,8 @@
 			children = (
 				B09C71E023D14C7D002DC238 /* thumbnail.png */,
 				B09C71E223D14C92002DC238 /* thumbnail2.png */,
-				B09C71DA23D13F09002DC238 /* Info.plist */,
-				B09C71D423D13C88002DC238 /* DVDView.h */,
-				B09C71D523D13C89002DC238 /* DVDView.m */,
-				B00D1B1223D329D000246C70 /* preview.mov */,
+				B09C71D423D13C88002DC238 /* view.h */,
+				B09C71D523D13C89002DC238 /* view.m */,
 				B0BE232F23D3E18300672C2F /* dvdlogo.png */,
 				B09C71C623D1354C002DC238 /* Products */,
 			);
@@ -67,7 +61,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09C71D623D13C89002DC238 /* DVDView.h in Headers */,
+				B09C71D623D13C89002DC238 /* view.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,10 +123,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0BE233023D3E18400672C2F /* dvdlogo.png in Resources */,
-				B09C71DB23D13F0A002DC238 /* Info.plist in Resources */,
 				B09C71E123D14C7D002DC238 /* thumbnail.png in Resources */,
 				B09C71E323D14C92002DC238 /* thumbnail2.png in Resources */,
-				B00D1B1323D329D000246C70 /* preview.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09C71D723D13C89002DC238 /* DVDView.m in Sources */,
+				B09C71D723D13C89002DC238 /* view.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +199,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = DVD;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -263,6 +256,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = DVD;
 				SDKROOT = macosx;
 			};
 			name = Release;
