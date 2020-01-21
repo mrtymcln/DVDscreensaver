@@ -8,7 +8,7 @@
 {self = [super initWithFrame:frame isPreview:isPreview];if (self) {
     
     const float fps = 60.0f;
-    [self setAnimationTimeInterval:1.0/fps];
+    [self setAnimationTimeInterval:2.0/fps];
     
     const int speed = WIDTH / (15.0 * fps);
     
@@ -63,8 +63,11 @@
                        [NSColor orangeColor],
                        [NSColor magentaColor],
                        [NSColor greenColor]];
-    self.dvdColor = colours[arc4random() % [colours count]];
-    
+    while (self.dvdColor == self.dvdColorPrev) {
+        self.dvdColor = colours[arc4random() % [colours count]];
+    }
+    self.dvdColorPrev = self.dvdColor;
+
     [self.dvdLogo lockFocus];
     [self.dvdColor set];
     NSRect imageRect = {NSZeroPoint, [self.dvdLogo size]};
