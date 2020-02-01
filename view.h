@@ -2,6 +2,7 @@
 @interface DVDView : ScreenSaverView
 @property NSImage * dvdLogo;
 @property NSColor * dvdColor;
+@property NSColor * dvdColorPrev;
 @property NSRect dirtyRect;
 
 @property int dvdWidth, dvdHeight;
