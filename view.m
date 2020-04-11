@@ -25,8 +25,8 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
     self.initializing = YES;
     self.dvdWidth = 256;
     self.dvdHeight = 128;
-    self.x = WIDTH / 2.0 - self.dvdWidth / 2.0;
-    self.y = HEIGHT / 2.0 - self.dvdHeight / 2.0;
+    self.x = self.bounds.size.width / 2.0 - self.dvdWidth / 2.0;
+    self.y = self.bounds.size.height / 2.0 - self.dvdHeight / 2.0;
     self.dirtyRect = NSMakeRect(self.x, self.y, self.dvdWidth, self.dvdHeight);
     self.xSpeed = speed * (arc4random() % 2 == 0 ? 1 : -1);
     self.ySpeed = speed * (arc4random() % 2 == 0 ? 1 : -1);
