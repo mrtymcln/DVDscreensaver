@@ -9,4 +9,5 @@
 @property int x, y;
 @property int xSpeed, ySpeed;
 @property unsigned long prevIdx;
+@property BOOL initializing;
 @end

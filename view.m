@@ -22,6 +22,7 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
 
     const int speed = WIDTH / (15.0 * fps);
 
+    self.initializing = YES;
     self.dvdWidth = 256;
     self.dvdHeight = 128;
     self.x = WIDTH / 2.0 - self.dvdWidth / 2.0;
@@ -41,8 +42,6 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
         drawLogo(dvdPath, [NSColor magentaColor]),
         drawLogo(dvdPath, [NSColor greenColor])
     ];
-    self.prevIdx = arc4random() % [self.dvdLogos count];
-    self.dvdLogo = self.dvdLogos[self.prevIdx];
 }return self;}
 
 - (void)startAnimation
@@ -53,6 +52,20 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
     const float g = 0.0f/255.0f;
     [[NSColor colorWithRed:g green:g blue:g alpha:1] setFill];
     NSRectFill(rectParam);
+
+    if (self.initializing) {
+        const unsigned long count = [self.dvdLogos count];
+        unsigned long offset = self.prevIdx = arc4random() % (count - 1);
+        NSImage * logo = self.dvdLogo = self.dvdLogos[offset % count];
+        for (unsigned long i = 1; i < count; i++) {
+            logo = self.dvdLogos[(offset + i) % count];
+            [logo drawInRect:self.dirtyRect];
+        }
+        [self.dvdLogo drawInRect:self.dirtyRect];
+        self.initializing = NO;
+        return;
+    }
+
     NSRect rect;
     
     rect.size = NSMakeSize(self.dvdWidth, self.dvdHeight);
