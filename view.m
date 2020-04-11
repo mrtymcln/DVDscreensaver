@@ -41,8 +41,8 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
         drawLogo(dvdPath, [NSColor magentaColor]),
         drawLogo(dvdPath, [NSColor greenColor])
     ];
-
-    [self hitWall];
+    self.prevIdx = arc4random() % [self.dvdLogos count];
+    self.dvdLogo = self.dvdLogos[self.prevIdx];
 }return self;}
 
 - (void)startAnimation
@@ -79,7 +79,13 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
 
 - (void)hitWall
 {
-    self.dvdLogo = self.dvdLogos[arc4random() % [self.dvdLogos count]];
+    const unsigned long count = [self.dvdLogos count];
+    int idx = arc4random() % (count - 1);
+    if (idx >= self.prevIdx) {
+        idx = (idx + 1) % count;
+    }
+    self.prevIdx = idx;
+    self.dvdLogo = self.dvdLogos[idx];
 }
 
 - (void)animateOneFrame {

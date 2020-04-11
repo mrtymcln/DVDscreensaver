@@ -8,4 +8,5 @@
 @property int dvdWidth, dvdHeight;
 @property int x, y;
 @property int xSpeed, ySpeed;
+@property unsigned long prevIdx;
 @end
