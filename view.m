@@ -16,13 +16,12 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
 }
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
-{self = [super initWithFrame:frame isPreview:isPreview];if (self) {
-    
+{self = [super initWithFrame:frame isPreview:isPreview]; if (self) {
     const float fps = 60.0f;
     [self setAnimationTimeInterval:1.0/fps];
-    
+
     const int speed = WIDTH / (15.0 * fps);
-    
+
     self.dvdWidth = 256;
     self.dvdHeight = 128;
     self.x = WIDTH / 2.0 - self.dvdWidth / 2.0;
@@ -50,8 +49,8 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
 {[super startAnimation];}
 - (void)stopAnimation
 {[super stopAnimation];}
-- (void)drawRect:(NSRect)rectParam
-{const float g = 0.0f/255.0f;
+- (void)drawRect:(NSRect)rectParam {
+    const float g = 0.0f/255.0f;
     [[NSColor colorWithRed:g green:g blue:g alpha:1] setFill];
     NSRectFill(rectParam);
     NSRect rect;
@@ -69,7 +68,8 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
     
     if (centre.x + self.dvdWidth / 2 >= self.bounds.size.width || centre.x - self.dvdWidth / 2 <= 0) {
         self.xSpeed *= -1;
-        [self hitWall];}
+        [self hitWall];
+    }
     
     if (centre.y + self.dvdHeight / 2 >= self.bounds.size.height || centre.y - self.dvdHeight / 2 <= 0) {
         self.ySpeed *= -1;
@@ -82,8 +82,10 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
     self.dvdLogo = self.dvdLogos[arc4random() % [self.dvdLogos count]];
 }
 
-- (void)animateOneFrame
-{[self setNeedsDisplayInRect:self.dirtyRect];return;}
+- (void)animateOneFrame {
+    [self setNeedsDisplayInRect:self.dirtyRect];
+    return;
+}
 - (BOOL)hasConfigureSheet{return NO;}
 - (NSWindow*)configureSheet{return nil;}
 @end
