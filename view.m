@@ -4,6 +4,17 @@
 
 @implementation DVDView
 
+static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
+    NSImage * dvdLogo = [[NSImage alloc] initWithContentsOfFile:dvdPath];
+    [dvdLogo lockFocus];
+    [dvdColor set];
+    NSRect imageRect = {NSZeroPoint, [dvdLogo size]};
+    NSRectFillUsingOperation(imageRect, NSCompositingOperationSourceAtop);
+    [dvdLogo unlockFocus];
+    [dvdLogo setCacheMode:NSImageCacheAlways];
+    return dvdLogo;
+}
+
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {self = [super initWithFrame:frame isPreview:isPreview];if (self) {
     
@@ -22,9 +33,18 @@
     
     NSString * dvdPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"dvdlogo" ofType:@"png"];
     
-    self.dvdLogo = [[NSImage alloc] initWithContentsOfFile:dvdPath];
-    [self hitWall];}
-    return self;}
+    self.dvdLogos = @[
+        drawLogo(dvdPath, [NSColor redColor]),
+        drawLogo(dvdPath, [NSColor blueColor]),
+        drawLogo(dvdPath, [NSColor yellowColor]),
+        drawLogo(dvdPath, [NSColor cyanColor]),
+        drawLogo(dvdPath, [NSColor orangeColor]),
+        drawLogo(dvdPath, [NSColor magentaColor]),
+        drawLogo(dvdPath, [NSColor greenColor])
+    ];
+
+    [self hitWall];
+}return self;}
 
 - (void)startAnimation
 {[super startAnimation];}
@@ -47,29 +67,20 @@
     
     CGPoint centre = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
     
-    if (centre.x + self.dvdWidth / 2 >= WIDTH || centre.x - self.dvdWidth / 2 <= 0) {
+    if (centre.x + self.dvdWidth / 2 >= self.bounds.size.width || centre.x - self.dvdWidth / 2 <= 0) {
         self.xSpeed *= -1;
         [self hitWall];}
     
-    if (centre.y + self.dvdHeight / 2 >= HEIGHT || centre.y - self.dvdHeight / 2 <= 0) {
+    if (centre.y + self.dvdHeight / 2 >= self.bounds.size.height || centre.y - self.dvdHeight / 2 <= 0) {
         self.ySpeed *= -1;
-        [self hitWall];}}
+        [self hitWall];
+    }
+}
 
 - (void)hitWall
-{NSArray * colours = @[[NSColor redColor],
-                       [NSColor blueColor],
-                       [NSColor yellowColor],
-                       [NSColor cyanColor],
-                       [NSColor orangeColor],
-                       [NSColor magentaColor],
-                       [NSColor greenColor]];
-    self.dvdColor = colours[arc4random() % [colours count]];
-    
-    [self.dvdLogo lockFocus];
-    [self.dvdColor set];
-    NSRect imageRect = {NSZeroPoint, [self.dvdLogo size]};
-    NSRectFillUsingOperation(imageRect, NSCompositingOperationSourceAtop);
-    [self.dvdLogo unlockFocus];}
+{
+    self.dvdLogo = self.dvdLogos[arc4random() % [self.dvdLogos count]];
+}
 
 - (void)animateOneFrame
 {[self setNeedsDisplayInRect:self.dirtyRect];return;}

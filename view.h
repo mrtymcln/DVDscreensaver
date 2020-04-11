@@ -1,6 +1,7 @@
 #import <ScreenSaver/ScreenSaver.h>
 @interface DVDView : ScreenSaverView
 @property NSImage * dvdLogo;
+@property NSArray * dvdLogos;
 @property NSColor * dvdColor;
 @property NSRect dirtyRect;
 
