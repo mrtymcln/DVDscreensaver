@@ -15,6 +15,7 @@ static NSImage * drawLogo(NSString *dvdPath, NSColor *dvdColor) {
     return dvdLogo;
 }
 
+
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {self = [super initWithFrame:frame isPreview:isPreview]; if (self) {
     const float fps = 60.0f;
