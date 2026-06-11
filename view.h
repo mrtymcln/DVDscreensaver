@@ -4,6 +4,7 @@
 @property NSImage * dvdLogo;
 @property NSArray * dvdLogos;
 @property NSColor * dvdColor;
+@property NSColor * dvdColorPrev;
 @property NSRect dirtyRect;
 
 @property int dvdWidth, dvdHeight;
